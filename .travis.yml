@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
   - docker
@@ -6,5 +7,5 @@ before_install:
   - docker build -t sarath2991/supertramp:travis -f dockerfile.dev .
 
 script:
-  - docker run CI=true sarath2991/supertramp:travis npm run test -- --coverage
+  - docker run -e CI=true sarath2991/supertramp:travis npm run test
 
