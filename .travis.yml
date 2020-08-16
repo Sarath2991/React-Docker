@@ -9,3 +9,18 @@ before_install:
 script:
   - docker run -e CI=true sarath2991/supertramp:travis npm run test
 
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-2
+  app: "docker-react"
+  env: "Docker-env"
+  bucket_name: "bucket name"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY #AWS_ACCESS_KEY and AWS_SECRET_KEY are the environment variables stored in  travis ci
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  
+
+
